@@ -1,0 +1,13 @@
+//just logic
+//with function
+public static void intersections(int arr1[], int arr2[]) {
+    	//Your code goes here
+        int a1=arr1.length,a2=arr2.length;
+        for(int i=0;i<a1;i++){
+            for(int j=0;j<a2;j++){
+                if(arr1[i]==arr2[j]){
+                     System.out.print(arr2[j]+" ");
+                }
+            }
+        }
+    }
