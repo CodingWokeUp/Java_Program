@@ -1,0 +1,19 @@
+public static void rotate(int[] arr, int d) {
+        int count=0, z[]=new int[arr.length],k=0;
+    	//Your code goes here
+        for(int i=0;i<arr.length;i++){
+            if(i==d){
+                break;
+            }
+            count++;
+        }
+        for(int j=count;j<arr.length;j++){
+                 z[k++]= arr[j] ;
+        }
+        for(int j=0;j<count;j++){
+           z[k++]= arr[j];
+        }
+        for(int i=0;i<arr.length;i++){
+            arr[i]=z[i];
+        }
+    }
