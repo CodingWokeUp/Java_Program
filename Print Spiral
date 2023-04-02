@@ -1,0 +1,39 @@
+//demo code
+int ml=matrix.length-1,mcl=matrix[0].length-1,rl=0,cl=0,c=1,i=1,j=1;
+		if(ml+1==1&&mcl+1==0){
+			System.out.print(" " );
+			return;
+		}
+		else if((ml+1)==1){
+			for(i=cl;i<=mcl;i++){
+                 System.out.print(matrix[rl][i]+" ");
+			}
+		}
+		else if((mcl+1)==1){
+			for(i=rl;i<=ml;i++){
+                 System.out.print(matrix[i][cl]+" ");
+			}
+		}else{
+		while(c<=(matrix.length*matrix[0].length)){
+			for(i=rl;i<=mcl;i++){
+				System.out.print(matrix[rl][i]+" ");
+				c++;
+			}
+			rl++;
+			for(i=rl;i<=ml;i++){
+				System.out.print(matrix[i][mcl]+" ");
+				c++;
+			}
+			mcl--;
+			for(i=mcl;i>=cl;i--){
+				System.out.print(matrix[ml][i]+" ");
+				c++;
+			}
+			ml--;
+			for(i=ml;i>=rl;i--){
+				System.out.print(matrix[i][cl]+" ");
+				c++;
+			}
+			cl++;
+		}
+		
