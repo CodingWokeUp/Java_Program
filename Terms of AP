@@ -1,0 +1,22 @@
+public static void main(String[] args)
+{
+		// Write your code here
+       Scanner sc=new Scanner(System.in);
+		 int n=sc.nextInt();
+		 int p=0;
+		 if(1<=n && n <=1000)
+     {
+			 for(int i=1;i<=n;i++)
+       {
+                  p=3*i+2;
+				  if(p%4!=0)
+          {
+					  System.out.print(p+" ");
+				  }
+          else
+          {
+					  n++;
+				  }
+			 }
+		 }
+	}
