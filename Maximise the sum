@@ -1,0 +1,32 @@
+public static long maximumSumPath(int[] input1, int[] input2) {
+	long maxsum=0;
+    long s1=0,s2=0;
+    int i=0,j=0;
+	int m=input1.length,n=input2.length;
+    
+    while(i<m && j<n){
+        if(input1[i]<input2[j]){
+            s1+=input1[i];
+            i++;
+        }
+        else if(input1[i]>input2[j]){
+            s2+=input2[j];
+            j++;
+        }
+        else{
+            maxsum+=Math.max(s1,s2)+input1[i];
+            s1=0;
+			s2=0;
+            i++;
+            j++;
+        }
+    }
+    //Adding remaining elements
+    while (i<m)
+        s1+=input1[i++];
+    while (j<n)
+        s2+=input2[j++];
+    maxsum+=Math.max(s1,s2);
+    return maxsum;
+	
+	}
