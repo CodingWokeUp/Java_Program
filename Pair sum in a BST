@@ -1,0 +1,76 @@
+import java.util.*;
+
+public class Solution {
+	/*
+	 * BinaryTreeNode class
+	 * 
+	 * class BinaryTreeNode<T> 
+	 * { 
+	 * 		T data; 
+	 * 		BinaryTreeNode<T> left; 
+	 * 		BinaryTreeNode<T> right;
+	 *		public BinaryTreeNode(T data) 
+	 *		{
+	 *  		this.data = data; 
+	 *  	} 
+	 *  }
+	 */
+	 // cureate array list 
+	public static ArrayList<Integer> currArrayList(BinaryTreeNode<Integer> root) {
+		if( root == null ) 
+		{
+			ArrayList<Integer> arr =new ArrayList<>();
+			return arr;
+		}
+		ArrayList<Integer> currArr = new ArrayList<>();
+		ArrayList<Integer> arrLeft = currArrayList(root.left);
+		if( !arrLeft.isEmpty())
+		{
+			currArr.addAll(arrLeft);
+		}
+		currArr.add(root.data);
+		ArrayList<Integer> arrRight = currArrayList(root.right);
+		if( !arrRight.isEmpty())
+	    {
+			currArr.addAll(arrRight);
+		}
+		return currArr;
+	}
+	// print pair of sum
+	public static void pair( ArrayList<Integer> arr, int s)
+	{
+		int i= 0;
+		int j = arr.size()-1;
+		
+		while( i < j){
+			int val1 = arr.get(i);
+		    int val2 = arr.get(j);
+            if(val1 + val2 < s)
+			{
+				i = i+1;
+			}
+			else if(val1 + val2 > s)
+			{
+				j = j -1;
+			}
+			else{
+				System.out.println( val1+" "+val2);
+				i = i+1;
+				j = j-1;
+			}
+		}
+	}
+	public static void printNodesSumToS(BinaryTreeNode<Integer> root, int s) {
+		// Write your code here
+		if(root == null){
+			return ;
+		}
+		else {
+			ArrayList<Integer> arr = currArrayList(root);
+			Collections.sort(arr);
+			pair(arr, s);
+		}
+				
+	}
+
+}
