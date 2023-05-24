@@ -1,0 +1,22 @@
+public static void replaceWithDepth(TreeNode<Integer> root) 
+{
+if(root == null ) 
+{
+return ;
+}
+replaceHelper(root, 0);
+}
+// replace helper function
+public static void replaceHelper(TreeNode<Integer> root , int depth)
+{
+if(root == null )
+{
+return ;
+}
+root.data = k;
+for( int i= 0; i<root.children.size(); i++)
+{
+replacehelper(root.children.get(i), depth+1);
+}
+
+}
