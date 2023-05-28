@@ -1,0 +1,144 @@
+import java.util.*;
+
+public class Solution {
+
+	/*
+	 * TreeNode structure
+	 *
+	 * class TreeNode<T> {
+	 * T data;
+	 * ArrayList<TreeNode<T>> children;
+	 *
+	 * TreeNode(T data){
+	 * this.data = data;
+	 * children = new ArrayList<TreeNode<T>>();
+	 * }
+	 * }
+	 */
+
+	public static TreeNode<Integer> findSecondLargest(TreeNode<Integer> root) {
+
+		if (root == null || root.children.size() == 0) {
+			// if the tree is empty or has only one node, return null
+			return null;
+		}
+
+		// create a priority queue to store the values of all the nodes in the tree
+		PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+
+		// perform a depth-first traversal of the tree and add the values of all the
+		// nodes to the queue
+		traverse(root, queue);
+
+		// remove the largest value from the queue
+		int largest = queue.poll();
+
+		// find the second largest value in the queue
+		int secondLargest = Integer.MIN_VALUE;
+		while (!queue.isEmpty()) {
+			int value = queue.poll();
+			if (value != largest && value > secondLargest) {
+				secondLargest = value;
+			}
+		}
+
+		// if a second largest value was found in the queue, find the node in the tree
+		// with that value
+		if (secondLargest != Integer.MIN_VALUE) {
+			return findNode(root, secondLargest);
+		}
+
+		// if no second largest value was found in the queue, return null
+		return null;
+	}
+
+	private static void traverse(TreeNode<Integer> node, PriorityQueue<Integer> queue) {
+		if (node == null) {
+			return;
+		}
+
+		// add the node's value to the queue
+		queue.offer(node.data);
+
+		// recursively traverse all the node's children
+		for (TreeNode<Integer> child : node.children) {
+			traverse(child, queue);
+		}
+	}
+
+	private static TreeNode<Integer> findNode(TreeNode<Integer> node, int value) {
+		if (node == null) {
+			return null;
+		}
+
+		if (node.data == value) {
+			return node;
+		}
+
+		// recursively search for the node with the given value in the node's children
+		for (TreeNode<Integer> child : node.children) {
+			TreeNode<Integer> found = findNode(child, value);
+			if (found != null) {
+				return found;
+			}
+		}
+
+		return null;
+	}
+}
+// or 
+import java.util.*;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+		
+	
+	public static TreeNode<Integer> findSecondLargest(TreeNode<Integer> root){
+
+          if(root.children.size() == 0){
+              return null;
+          }
+        Queue<TreeNode<Integer>> queue = new LinkedList<>();
+        TreeNode<Integer> fl=root,sl=null;
+        int data = 0;
+        queue.add(root);
+       
+        while(!queue.isEmpty())
+        {
+            TreeNode<Integer> frontNode = queue.poll();
+                 for(int i=0;i<frontNode.children.size();i++){
+                    queue.add(frontNode.children.get(i));
+                }
+            
+                if(frontNode.data >  data){
+                    if(frontNode.data > fl.data){
+                        sl = fl;
+                        data = fl.data;
+                        fl = frontNode;
+                    }
+                    else if (frontNode.data < fl.data){
+                        sl = frontNode;
+                        data = sl.data;
+                    }
+                }   
+            
+            }
+          return sl;
+    
+
+    }
+    
+    
+}
