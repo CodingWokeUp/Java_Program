@@ -1,0 +1,65 @@
+import java.util.*;
+public class Solution {
+
+    public static int maxFrequencyNumber(int[] arr){ 
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		if(arr.length == 1) {
+			return arr[0];
+		}
+		HashMap<Integer,Integer> map = new HashMap<>();
+		for( int i=0; i<arr.length; i++){
+			int count =0;
+			for( int j=0 ;j< arr.length; j++) {
+				
+				if(arr[i] == arr[j]){
+					count ++;
+				}
+			}
+			map.put(count, arr[i]);
+		}
+	
+      List<Integer> keys = new ArrayList<>(map.keySet());
+	    int temp=0,output=0;
+	   if(map.size()==1){
+            output = arr[0];
+	   }
+	   else if(!map.isEmpty()){
+		  temp = keys.get(keys.size()-1);
+		  output =map.get(temp); 
+	  }
+	  	   return output;
+    }
+}
+// or
+import java.util.HashMap;
+public class Solution {
+
+    public static int maxFrequencyNumber(int[] arr){
+        HashMap<Integer,Integer> h=new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(h.containsKey(arr[i])){
+                h.put+(arr[i],h.get(arr[i])+1);
+            }
+            else
+                h.put(arr[i],1);
+        }
+        int max=0;
+        int maxKey=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++)
+       
+        {
+            if(h.get(arr[i])>max){
+                max=h.get(arr[i]);
+                maxKey=arr[i];
+				}
+
+        }
+        return maxKey ;
+    }
+}
+
