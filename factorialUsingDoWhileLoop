@@ -1,0 +1,16 @@
+//////////////////////////////////////////////////// java code find factorial using do while loop //////////////////////////////////////////////////////
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int fact =1;
+		do{
+		    fact = fact * n;
+		    n--;
+		}while(n != 1);
+		System.out.print("fact :"+ fact);
+	}
+}
