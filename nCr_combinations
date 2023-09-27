@@ -1,0 +1,41 @@
+INPUT IS :
+ENTER IS N : 7 
+ENTER IS R : 4
+
+OUTPUT IS : 35
+
+NOT WHERE USED A FORMULA : N! / R! ( N - R )! .
+
+/////////////////////////////////////////////////////////////////////////JAVA CODE FING nCr COMBINATIONS //////////////////////////////////////////////////
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int r = sc.nextInt();
+        
+        if (r < 0 || r > n) {
+            System.out.println("Invalid input: r must be between 0 and n.");
+            return;
+        }
+        
+        long top = fact(n);
+        long bottom = fact(r) * fact(n - r);
+       
+        float result = top / bottom;
+
+        System.out.print("permutations: " + result);
+    }
+
+    public static long fact(int num) {
+        long fa = 1;
+        while (num > 0) {
+            fa = fa * num;
+            num--;
+        }
+        return fa;
+    }
+}
