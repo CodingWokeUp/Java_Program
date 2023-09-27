@@ -1,0 +1,40 @@
+INPUT IS :
+ENTER VALUE IS N : 4
+ENTER VALUE IS R : 2
+
+OUTPUT IS : 12
+  NOTE FORMULA : N! / (N - R)!
+
+
+/////////////////////////////////////////////////////// JAVA CODE FIND PERMOTATION ///////////////////////////////////////////////////////////////////
+ 
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int r = sc.nextInt();
+        
+        if (r < 0 || r > n) {
+            System.out.println("Invalid input: r must be between 0 and n.");
+            return;
+        }
+        
+        long top = fact(n);
+        long bottom = fact(n - r);
+        System.out.println("top :"+top+ " , bottom :" + bottom);
+        float result = top / bottom;
+
+        System.out.print("permutations: " + result);
+    }
+
+    public static long fact(int num) {
+        long fa = 1;
+        while (num > 0) {
+            fa = fa * num;
+            num--;
+        }
+        return fa;
+    }
+}
